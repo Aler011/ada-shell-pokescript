@@ -8,8 +8,8 @@ pokemon=$1
 url="https://pokeapi.co/api/v2/pokemon/$pokemon"
 csv_file="pokemon.csv"
 
-# Realizando la petición a la poke api
-response=$(curl -s "$url")
+# Realizando la petición a la poke api y evitando mostrar errores de peticion en pantalla
+response=$(curl -s -f "$url" 2>/dev/null)
 
 # Verificando si la respuesta está vacía
 if [ -z "$response" ]; then
